@@ -1,30 +1,25 @@
 import { Context } from "apollo-server-core";
 import { GraphQLFieldResolver } from "graphql";
+import fetch from "node-fetch";
 
 type Args = { id: string };
 
 const Query: Record<string, GraphQLFieldResolver<{}, Context, any>> = {
   swapiCharacterById: async (_, args: Args, ctx) => {
-    return {};
+    const response = await fetch(`https://swapi.dev/api/people/${args.id}/`);
+    const data = await response.json();
+    console.log(data);
+    return data;
   },
 };
 
 const StarWarsCharacter = {
-  name: () => {
-    return "test";
-  },
-  height: () => {
-    return "171";
-  },
-  mass: () => {
-    return "100";
-  },
-  gender: () => {
-    return "MALE";
-  },
+  name: (character: any) => character.name,
+  height: (character: any) => character.height,
+  mass: (character: any) => character.mass,
+  gender: (character: any) => character.gender.toUpperCase(),
 };
 
-// You can add new Object Resolvers to the default export and the server will pick them up automatically
 export default {
   Query,
   StarWarsCharacter,
