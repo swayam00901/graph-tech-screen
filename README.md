@@ -18,7 +18,7 @@ To make the code work with the SWAPI API, I need to update the resolver in src/m
 fetch response from API in resolvers and matching the schema defined in the GraphQL type definitions. 
 Install the node-fetch package to make HTTP requests.
 Update the resolver to fetch data from the SWAPI API.
-![image info](./iQueryRes.jpg)
+![image info](./QueryRes.jpg)
 ### Sample Query and output
 query {
   swapiCharacterById(id: "1") {
