@@ -12,3 +12,32 @@ This challenge is designed to emulate the daily activities of a person writing a
     - The StarWarsCharacter is equivalant to `people` in the api
     - API documentation: https://swapi.dev/documentation#people
 5. Run a query and make sure things are all working. 
+## ------------- Below is the Explanation and sample query -------
+To make the code work with the SWAPI API, I need to update the resolver in src/modules/swapi/resolvers.ts to fetch data from the SWAPI API.
+
+fetch response from API in resolvers and matching the schema defined in the GraphQL type definitions. 
+Install the node-fetch package to make HTTP requests.
+Update the resolver to fetch data from the SWAPI API.
+![image info](./iQueryRes.jpg)
+### Sample Query and output
+query {
+  swapiCharacterById(id: "1") {
+    name
+    height
+    mass
+    gender
+  }
+}
+
+result - 
+
+{
+  "data": {
+    "swapiCharacterById": {
+      "name": "Luke Skywalker",
+      "height": "172",
+      "mass": "77",
+      "gender": "MALE"
+    }
+  }
+}
